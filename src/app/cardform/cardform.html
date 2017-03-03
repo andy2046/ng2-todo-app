@@ -1,0 +1,56 @@
+<div>
+
+<div class="card big">
+
+<form #f="ngForm" (ngSubmit)="save(f.value, f.valid)" novalidate>
+
+<div class="input-group">
+<span class="input-group-addon" id="title-span">Title</span>
+<input type="text" [(ngModel)]="draftCard.title" name="title" #title="ngModel" maxlength="20" class="form-control" aria-describedby="title-span" placeholder="Title" autofocus required >
+<div [hidden]="title.valid || (title.pristine && !f.submitted)">
+	<div class="err">Title is required (Max length is 20)</div>
+</div>
+</div>
+
+<br />
+
+<div class="input-group">
+<span class="input-group-addon" id="description-span">Description</span>
+<textarea rows="1" [(ngModel)]="draftCard.description" name="description" #description="ngModel" maxlength="150" class="form-control" aria-describedby="description-span" placeholder="Description" required></textarea>
+<div [hidden]="description.valid || (description.pristine && !f.submitted)">
+	<div class="err">Description is required (Max length is 150)</div>
+</div>
+</div>
+
+<br />
+
+<div class="input-group">
+<span class="input-group-addon" id="status-span">Status</span>
+<select name="status" class="form-control" #status="ngModel" aria-describedby="status-span" [(ngModel)]="draftCard.status">
+<option value="todo">To Do</option>
+<option value="in-progress">In Progress</option>
+<option value="done">Done</option>
+</select>
+</div>
+
+<br />
+
+<div class="input-group">
+<span class="input-group-addon" id="color-span">Color</span>
+<input name="color" #color="ngModel" class="form-control" aria-describedby="color-span" type="color" [(ngModel)]="draftCard.color" defaultValue="#ff0000">
+</div>
+
+<br />
+
+<div class="actions">
+<button type="submit" [disabled]="f.invalid" class="btn btn-success"><span [innerText]="buttonLabel"></span></button>
+</div>
+
+</form>
+
+</div>
+
+<div class="overlay" (click)="cancel()">
+</div>
+
+</div>
