@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs/Rx';
 
 @Component({
     selector: 'cardform',
-    templateUrl: 'cardform.html'
+    templateUrl: './cardform.component.html'
 })
 
 export class CardformComponent implements OnInit, OnDestroy {
