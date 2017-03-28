@@ -42,7 +42,7 @@ export class CardformComponent implements OnInit, OnDestroy {
 			
 			if (this.editCardId) {
 				this.buttonLabel = 'Edit Card';
-				this.draftCard = this._cardsService.getCard(this.editCardId);
+				this.draftCard = JSON.parse(JSON.stringify( this._cardsService.getCard(this.editCardId) ));
 			} else {
 				this.buttonLabel = 'Create Card';
 				this.draftCard = {
